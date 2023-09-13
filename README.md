@@ -1,1 +1,1 @@
-# Note Taker Starter Code
+# CWRU Bootcamp Challenge 11 - Note Registry
