@@ -14,15 +14,38 @@ router.use(express.json());
 router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, '../public/notes.html'));
 });
+//basic GET call to send styles.css to allow notes.html to display correctly
+router.get("/css/styles.css", (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/assets/css/styles.css'));
+});
+//basic GET call to send styles.css to allow notes.html to display correctly
+router.get("/js/index.js", (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/assets/js/index.js'));
+});
 
 router.get('/data', (req, res) => {
-    res.status(200).json(notes);
+    res.sendFile(databasePATH);
+  });
+
+  //Set up request to allow user to request single note
+  router.get('/data/:id', (req, res) => {
+    const notes = require(databasePATH);
+    if (req.params.id) {
+      const noteID = req.params.id;
+      for (let i = 0; i < notes.length; i++) {
+        const currentNote = notes[i];
+        if (currentNote.note_id === noteID) {
+          res.json(currentNote);
+          return;
+        }
+      }
+      res.status(404).send('Note not found');
+    } else {
+      res.status(400).send('Note ID not provided');
+    }
   });
 
 router.post('/data', (req, res) => {
-    // Log that a POST request was received
-    console.info(`${req.method} request received to add a review`);
-
     //Creates valid JSON file synchronously if a file does not exist already
     if(!(fs.existsSync(databasePATH))){
       console.log("Database does not exist! Creating database JSON now...")
