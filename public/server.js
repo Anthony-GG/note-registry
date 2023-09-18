@@ -11,6 +11,11 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, '/index.html'));
 });
 
+//basic GET call to send styles.css to allow notes.html to display correctly
+app.get("/js/index.js", (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/assets/js/index.js'));
+  });
+
 //requires notes router to connect index page to notes, app use implements it
 const notesRouter = require('../routes/notes')
 app.use('/notes', notesRouter);
