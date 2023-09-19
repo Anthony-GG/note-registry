@@ -12,7 +12,7 @@
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Video](#video)
+- [Deployed Site](#Website)
 - [Contrubuting](#contributing)
 - [License](#license)
 - [Contact Me](#questions)
@@ -25,10 +25,10 @@ Simply download the files, run 'npm install' to get the required packages!<br>
 
 After doing the procedure done during installation, just run 'node server' in the command line within the 'public' folder and follow the prompts given to create your own personal note registry!
 
-## Video
+## Website (Deployed Site)
 
-### Here is a link to the video example showcasing the installation and usage of this project:
-[![Watch the video](https://img.youtube.com/vi/yvu42m7srhQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=yvu42m7srhQ)
+### Here is a link to the deployed website for the program!
+https://heroku.vayneglory.com/
 
 ## Example outputs from program
 <div style="text-align:center">
