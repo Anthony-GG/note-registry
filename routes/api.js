@@ -103,12 +103,11 @@ router.get('/notes', (req, res) => {
             var rNote = currentNote;
             break;
         }
+        // res.status(404).send('No match for Note ID');
         }
-        res.status(404).send('Note not found');
     } else {
         res.status(400).send('Note ID not provided');
     }
-
         //Reads the existing JSON file and extracts data from it to be rewritten adding info added from POST request
         fs.readFile(databasePATH, 'utf8', (err, data) => {
             if (err) {
