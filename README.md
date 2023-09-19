@@ -25,7 +25,7 @@ Simply download the files, run 'npm install' to get the required packages!<br>
 
 After doing the procedure done during installation, just run 'node server' in the command line within the 'public' folder and follow the prompts given to create your own personal note registry!
 
-## Website (Deployed Site)
+## Website
 
 ### Here is a link to the deployed website for the program!
 https://heroku.vayneglory.com/
