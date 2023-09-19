@@ -25,7 +25,7 @@ router.get('/notes', (req, res) => {
       const noteID = req.params.id;
       for (let i = 0; i < notes.length; i++) {
         const currentNote = notes[i];
-        if (currentNote.note_id === noteID) {
+        if (currentNote.id === noteID) {
           res.json(currentNote);
           return;
         }
@@ -62,7 +62,7 @@ router.get('/notes', (req, res) => {
               const newNote = {
                 title,
                 text,
-                note_id: uuid(),
+                id: uuid(),
               };
 
               const response = {
@@ -96,11 +96,11 @@ router.get('/notes', (req, res) => {
     router.delete('/notes/:id', (req, res) => {
     const notes = require(databasePATH);
     if (req.params.id) {
-        const noteID = req.params.id;
+        var noteID = req.params.id;
         for (let i = 0; i < notes.length; i++) {
-        const currentNote = notes[i];
-        if (currentNote.note_id === noteID) {
-            rNote = currentNote;
+        var currentNote = notes[i];
+        if (currentNote.id === noteID) {
+            var rNote = currentNote;
             break;
         }
         }
@@ -120,11 +120,10 @@ router.get('/notes', (req, res) => {
 
 
             //Finds index of the note that needs to removed
-            var index = existingData.findIndex(note => note.note_id === rNote.note_id);
-            console.log("Index of deleted item: " + index);
+            var index = existingData.findIndex(note => note.id === rNote.id);
 
             //Removes note object from json file
-            existingData.splice(index);
+            existingData.splice(index, 1);
             noteDataJSON = JSON.stringify(existingData);
             
 
