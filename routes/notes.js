@@ -29,28 +29,6 @@ router.get("/js/index.js", (req, res) => {
   res.sendFile(path.join(__dirname, '../public/assets/js/index.js'));
 });
 
-router.get('/data', (req, res) => {
-    res.sendFile(databasePATH);
-  });
-
-  //Set up request to allow user to request single note
-  router.get('/data/:id', (req, res) => {
-    const notes = require(databasePATH);
-    if (req.params.id) {
-      const noteID = req.params.id;
-      for (let i = 0; i < notes.length; i++) {
-        const currentNote = notes[i];
-        if (currentNote.note_id === noteID) {
-          res.json(currentNote);
-          return;
-        }
-      }
-      res.status(404).send('Note not found');
-    } else {
-      res.status(400).send('Note ID not provided');
-    }
-  });
-
 router.post('/data', (req, res) => {
     //Creates valid JSON file synchronously if a file does not exist already
     if(!(fs.existsSync(databasePATH))){

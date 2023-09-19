@@ -19,6 +19,9 @@ app.get("/js/index.js", (req, res) => {
 //requires notes router to connect index page to notes, app use implements it
 const notesRouter = require('../routes/notes')
 app.use('/notes', notesRouter);
+//requires api router to connect index page to api, app use implements it
+const apiRouter = require('../routes/api')
+app.use('/api', apiRouter);
 
 //starts the server
 app.listen(PORT);
